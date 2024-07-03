@@ -1,0 +1,48 @@
+{
+    "name": "saasscaleup/laravel-n-plus-one-detector",
+    "description": "Detect and notify N+1 query issues in your Laravel applications with ease!",
+    "license": "MIT",
+    "homepage": "https://github.com/saasscaleup/laravel-n-plus-one-detector",
+    "keywords": [
+        "laravel",
+        "n+1 query",
+        "n+1 problem",
+        "n + 1 query",
+        "query optimization",
+        "database optimization",
+        "performance tuning",
+        "query detector",
+        "laravel package",
+        "real-time detection",
+        "database performance",
+        "laravel performance",
+        "nplusone",
+        "n plus one"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Saasscaleup\\NPlusOneDetector\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel":{
+            "providers":[
+                "Saasscaleup\\NPlusOneDetector\\NPlusOneDetectorServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Scale-Up SaaS",
+            "email": "saasscaleup@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "illuminate/support": "^5.5|^6.0|^7.0|^8.0|^9.0|^10.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}
