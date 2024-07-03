@@ -20,18 +20,21 @@ class NPlusOneQueryListener
     {
         DB::listen(function ($query) {
             
-            $location = $this->getCallingLocation();
+            $location   = $this->getCallingLocation();
+            $md5        = md5($query->sql.$location);
 
-            $this->queries[] = [
-                'sql' => $query->sql,
-                'bindings' => $query->bindings,
-                'time' => $query->time,
-                'location' => $location,
-            ];
+            if ( !Cache::has($md5)){
+                $this->queries[] = [
+                    'sql' => $query->sql,
+                    'bindings' => $query->bindings,
+                    'time' => $query->time,
+                    'location' => $location,
+                ];
 
-            // Detect N+1 queries
-            if (count($this->queries) >= $this->nPlusOneThreshold) {
-                $this->detectNPlusOne();
+                // Detect N+1 queries
+                if (count($this->queries) >= $this->nPlusOneThreshold) {
+                    $this->detectNPlusOne();
+                }
             }
         });
     }
@@ -45,7 +48,7 @@ class NPlusOneQueryListener
         }
 
         foreach ($occurrences as $md5 => $queries) {
-            
+
             if (count($queries) > 10 && !Cache::has($md5)) {
                 $message = "Potential N+1 query detected: ".$queries[0]['sql'] . " executed " . count($queries) . " times at locations: " . $queries[0]['location'];
                 var_dump($message);
