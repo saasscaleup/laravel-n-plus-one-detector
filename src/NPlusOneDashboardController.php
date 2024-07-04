@@ -3,20 +3,24 @@
 namespace Saasscaleup\NPlusOneDetector;
 
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\File;
+use Saasscaleup\NPlusOneDetector\Models\NplusoneWarning;
+use Illuminate\Support\Facades\Session;
 
 class NPlusOneDashboardController extends Controller
 {
     public function index()
     {
-        return view('n-plus-one::dashboard');
+        session(['success'=> 'Warning deleted successfully.']);
+
+        $warnings = NplusoneWarning::orderBy('created_at', 'desc')->paginate(2); // Paginate the results
+        $message = session()->pull('success');
+        return view('n-plus-one::dashboard', compact('warnings'))->with('message', $message);
     }
 
-    public function logs()
+    public function destroy($id)
     {
-        $logPath = storage_path('logs/n-plus-one.log');
-        return response()->json([
-            'logs' => File::exists($logPath) ? File::get($logPath) : '',
-        ]);
+        $warning = NplusoneWarning::findOrFail($id);
+        return redirect()->route('n-plus-one.dashboard');
+
     }
 }

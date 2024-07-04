@@ -28,6 +28,13 @@ class NPlusOneDetectorServiceProvider extends ServiceProvider
             __DIR__ . '/resources/views' => resource_path('views/vendor/n-plus-one'),
         ], 'views');
 
+        // Publish migration
+        if (!class_exists('CreateNplusoneWarningsTable')) {
+            $this->publishes([
+                __DIR__ . '/migrations/2024_07_03_000000_create_nplusone_warnings_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_nplusone_warnings_table.php'),
+            ], 'migrations');
+        }
+
         $this->registerNPlusOneListener();
     }
 
