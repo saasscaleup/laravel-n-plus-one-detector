@@ -5,9 +5,6 @@ return [
     // Whether or not to enable the N+1 Detector
     'enabled' => env('NPLUSONE_ENABLED', true),
     
-    // The maximum number of queries allowed before detecting n+1 queries
-    'max_queries' => env('NPLUSONE_MAX_QUERIES', 100),
-    
     // The number of queries below which no alert will be triggered
     'queries_threshold' => env('NPLUSONE_QUERIES_THRESHOLD', 50),
     
@@ -25,4 +22,10 @@ return [
 
     // notification email subject for N + 1 Detector
     'notification_email_subject' => env('NPLUSONE_NOTIFICATION_EMAIL_SUBJECT', 'N+1 Detector Notification'),
+
+    'dashboard_middleware' => env('NPLUSONE_DASHBOARD_MIDDLEWARE', ['web', 'auth']),
+
+
+    'dashboard_records_pagination' => env('NPLUSONE_DASHBOARD_RECORDS_PAGINATION', ['web', 'auth']),
+
 ];
