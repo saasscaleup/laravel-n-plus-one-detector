@@ -71,7 +71,9 @@ class NPlusOneQueryListener
                         'location' => $queries[0]['location'],
                     ]);
 
-                    Cache::put($md5, true, 120);
+                    Cache::put($md5, true, config('n-plus-one.cache_lifetime')*60);
+
+                    NotificationService::send($message);
                 }
             }
 

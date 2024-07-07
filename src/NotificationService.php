@@ -66,7 +66,28 @@ class NotificationService
         }
 
         // Prepare the data to be sent in the request body
-        $data = ['text' => $message];
+        // $data = [
+        //     'subject' => config('n-plus-one.notification_email_subject'),
+        //     'text' => $message
+        // ];
+
+        $data = [
+            'text' => config('n-plus-one.notification_email_subject') ,
+            'attachments' => [
+                [
+                    'title' => config('n-plus-one.notification_email_subject'),
+                    'text' => $message,
+                    'color' => '#FFA500',
+                    'fields' => [
+                        [
+                            'title' => 'Priority',
+                            'value' => 'High',
+                            'short' => true
+                        ]
+                    ]
+                ]
+            ]
+        ];
 
         // Initialize the cURL session
         $ch = curl_init($webhookUrl);
@@ -103,7 +124,7 @@ class NotificationService
     public static function sendWebhookNotification($message)
     {
         // Get the webhook URL from the configuration
-        $webhookUrl = config('n-plus-one.webhook_url');
+        $webhookUrl = config('n-plus-one.custom_webhook_url');
 
         // If the webhook URL is not configured, return without sending the notification
         if (empty($webhookUrl)) {
@@ -111,7 +132,10 @@ class NotificationService
         }
 
         // Prepare the data to be sent in the request body
-        $data = ['text' => $message];
+        $data = [
+            'subject' => config('n-plus-one.notification_email_subject'),
+            'message' => $message
+        ];
 
         // Initialize the cURL session
         $ch = curl_init($webhookUrl);
@@ -160,7 +184,7 @@ class NotificationService
 
         try {
             // Send the email notification
-            Mail::raw($message, function ($msg) use ($to_emails) {
+            Mail::send('', ['message' => $message], function ($msg) use ($to_emails) {
                 // Set the recipients and subject of the email
                 $msg->to($to_emails)->subject(config('n-plus-one.notification_email_subject'));
             });

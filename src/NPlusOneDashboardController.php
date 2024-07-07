@@ -12,7 +12,7 @@ class NPlusOneDashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $warnings = NplusoneWarning::orderBy('created_at', 'desc')->paginate(5); // Paginate the results
+        $warnings = NplusoneWarning::orderBy('created_at', 'desc')->paginate(config('n-plus-one.dashboard_records_pagination')); // Paginate the results
         return view('n-plus-one::dashboard', compact('warnings'));
     }
 
