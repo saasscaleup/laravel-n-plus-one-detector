@@ -1,7 +1,7 @@
-![Main Window two](https://github.com/saasscaleup/laravel-stream-log/blob/master/nplusone-saasscaleup.png?raw=true)
+![Laravel N+1 Query Detector](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/nplusone-saasscaleup.png?raw=true)
 
-<h3 align="center">Real-time detection and resolution of N+1 query issues for Laravel applications. </h3>
-<h5 align="center">Provides detailed insights, advanced notifications, and a rich admin dashboard. Perfect for solo developers and teams. Compatible with Laravel 5.5+ and PHP 7+.</h5>
+<h1 align="center">Real-time detection and resolution of N+1 query issues for Laravel applications. </h1>
+<h4 align="center">Provides detailed insights, advanced notifications, and a rich admin dashboard. Perfect for solo developers and teams. Compatible with Laravel 5.5+ and PHP 7+.</h4>
 
 <h4 align="center">
   <a href="https://youtube.com/@ScaleUpSaaS">Youtube</a>
@@ -148,9 +148,9 @@ The dashboard provides a comprehensive view of all detected N+1 queries, includi
 
 Configure notifications to be sent via **Slack**, **webhook**, or **email**. Set your notification preferences in the config/n-plus-one.php file to stay informed about N+1 issues in your application.
 
-![slack](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/slack1-notification.png?raw=true)
-![webhook](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/webhook-notification.png?raw=true)
-![email](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/email-notification.png?raw=true)
+Slack ![slack](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/slack1-notification.png?raw=true)
+Webhook ![webhook](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/webhook-notification.png?raw=true)
+Email ![email](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/email-notification.png?raw=true)
 
 
 ## Advanced Features
