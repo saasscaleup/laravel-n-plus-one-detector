@@ -45,8 +45,6 @@ Laravel N+1 Query Detector is a powerful package designed to help you identify a
 - **Advanced Notifications**: Receive alerts via Slack, webhooks, or email, ensuring you never miss an important notification.
 - **Rich Admin Dashboards**: View all N+1 warnings in a comprehensive and user-friendly dashboard.
 - **Suit for Teams and Solo Developers**: Designed to be used by both solo developers and teams working collaboratively.
-- **Supports Laravel 5.5 and above**: Ensure compatibility with a wide range of Laravel versions.
-- **PHP 7 and above**: Supports modern PHP versions for better performance and security.
 
 
 ## Requirements
