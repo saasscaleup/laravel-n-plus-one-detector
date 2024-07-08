@@ -1,7 +1,7 @@
 ![Laravel N+1 Query Detector](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/nplusone-saasscaleup.png?raw=true)
 
-<h1 align="center">Real-time detection and resolution of N+1 query issues for Laravel applications. </h1>
-<h5 align="center">Provides detailed insights, advanced notifications, and a rich admin dashboard. Perfect for solo developers and teams. Compatible with Laravel 5.5+ and PHP 7+.</h5>
+<h1 align="center">Real-time detection and resolution of N+1 query issues for Laravel applications. Provides detailed insights, advanced notifications, and a rich admin dashboard. </h1>
+<h4 align="center">Perfect for solo developers and teams. Compatible with Laravel 5.5+ and PHP 7+.</h4>
 
 <h4 align="center">
   <a href="https://youtube.com/@ScaleUpSaaS">Youtube</a>
