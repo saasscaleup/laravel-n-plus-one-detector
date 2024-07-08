@@ -144,11 +144,25 @@ The dashboard provides a comprehensive view of all detected N+1 queries, includi
 
 ### Notifications
 
-Configure notifications to be sent via **Slack**, **webhook**, or **email**. Set your notification preferences in the config/n-plus-one.php file to stay informed about N+1 issues in your application.
+Configure notifications to be sent via **Slack**, **webhook**, or **email**. Set your notification preferences in the `config/n-plus-one.php` file to stay informed about N+1 issues in your application.
 
-Slack ![slack](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/slack1-notification.png?raw=true)
-Webhook ![webhook](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/webhook-notification.png?raw=true)
-Email ![email](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/email-notification.png?raw=true)
+```php
+    // Slack webhook url for N + 1 Detector
+    'slack_webhook_url' => env('NPLUSONE_SLACK_WEBHOOK_URL', ''),
+
+    // Custom webhook url for N + 1 Detector
+    'custom_webhook_url' => env('NPLUSONE_CUSTOM_WEBHOOK_URL', ''),
+
+    // notification email address for N + 1 Detector
+    'notification_email' => env('NPLUSONE_NOTIFICATION_EMAIL', 'admin@example.com'), // also possible: 'admin@example.com,admin2@example.com'
+```
+
+### Slack notification
+![slack](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/slack1-notification.png?raw=true)
+### Webhook notification
+![webhook](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/webhook-notification.png?raw=true)
+### Email notification
+![email](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/email-notification.png?raw=true)
 
 
 ## Advanced Features
