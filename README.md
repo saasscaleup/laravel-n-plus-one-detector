@@ -1,6 +1,7 @@
-![Main Window two](https://github.com/saasscaleup/laravel-stream-log/blob/master/lcl-saasscaleup.png?raw=true)
+![Main Window two](https://github.com/saasscaleup/laravel-stream-log/blob/master/nplusone-saasscaleup.png?raw=true)
 
-<h3 align="center">Easily stream your Laravel application logs to the browser console tab (console.log) in real-time using server-sent event (SSE)</h3>
+<h3 align="center">Real-time detection and resolution of N+1 query issues for Laravel applications. </h3>
+<h5 align="center">Provides detailed insights, advanced notifications, and a rich admin dashboard. Perfect for solo developers and teams. Compatible with Laravel 5.5+ and PHP 7+.</h5>
 
 <h4 align="center">
   <a href="https://youtube.com/@ScaleUpSaaS">Youtube</a>
@@ -13,34 +14,45 @@
 </h4>
 
 <p align="center">
-   <a href="https://packagist.org/packages/saasscaleup/laravel-console-log">
-      <img src="https://poser.pugx.org/saasscaleup/laravel-console-log/v/stable.png" alt="Latest Stable Version">
+   <a href="https://packagist.org/packages/saasscaleup/laravel-n-plus-one-detector">
+      <img src="https://poser.pugx.org/saasscaleup/laravel-n-plus-one-detector/v/stable.png" alt="Latest Stable Version">
   </a>
 
-  <a href="https://packagist.org/packages/saasscaleup/laravel-console-log">
-      <img src="https://poser.pugx.org/saasscaleup/laravel-console-log/downloads.png" alt="Total Downloads">
+  <a href="https://packagist.org/packages/saasscaleup/laravel-n-plus-one-detector">
+      <img src="https://poser.pugx.org/saasscaleup/laravel-n-plus-one-detector/downloads.png" alt="Total Downloads">
   </a>
 
-  <a href="https://packagist.org/packages/saasscaleup/laravel-console-log">
-    <img src="https://poser.pugx.org/saasscaleup/laravel-console-log/license.png" alt="License">
+  <a href="https://packagist.org/packages/saasscaleup/laravel-n-plus-one-detector">
+    <img src="https://poser.pugx.org/saasscaleup/laravel-n-plus-one-detector/license.png" alt="License">
   </a>
 </p>
 
+<br>
+
+![banner](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/dashboard.png?raw=true)
+<br>
+<hr></hr>
+
+# Laravel N+1 Query Detector
+
+Laravel N+1 Query Detector is a powerful package designed to help you identify and resolve N+1 query problems in real-time. Perfect for individual developers and teams, this package enhances your application’s performance by catching inefficient queries before they impact your users.
+
+
 ## ✨ Features
 
-- **Easily stream your Backend events from your Controllers \ Events \ Models \ Etc...  to Frontend browser console tab(`console.log')(data)`).** 
-- **Easily stream your Application Logs (`storage/logs/laravel.log`)to Frontend browser console tab (`console.log')(data)`).**
-
-<br>
-
-![banner](https://github.com/saasscaleup/laravel-console-log/blob/master/lcl-demo.gif?raw=true)
-<br>
+- Real-time N+1 Query Detection: Identify N+1 queries as they happen, ensuring your application remains performant.
+- Detailed Query Insights: Get detailed information about each detected N+1 query, including the class and methods involved.
+- Advanced Notifications: Receive alerts via Slack, webhooks, or email, ensuring you never miss an important notification.
+- Rich Admin Dashboards: View all N+1 warnings in a comprehensive and user-friendly dashboard.
+- Suit for Teams and Solo Developers: Designed to be used by both solo developers and teams working collaboratively.
+- Supports Laravel 5.5 and above: Ensure compatibility with a wide range of Laravel versions.
+- PHP 7 and above: Supports modern PHP versions for better performance and security.
 
 
 ## Requirements
 
  - PHP >= 7
- - Laravel >= 5
+ - Laravel >= 5.5
 
 ## Installation
 
@@ -49,191 +61,103 @@
 Via Composer - Not recommended for production environment
 
 ``` bash
-$ composer require --dev saasscaleup/laravel-console-log
+$ composer require --dev saasscaleup/laravel-n-plus-one-detector
 ```
-
-#### For Laravel < 5.5
-
-Add Service Provider to `config/app.php` in `providers` section
-```php
-Saasscaleup\LCL\LCLServiceProvider::class,
-```
-
-Add Facade to `config/app.php` in `aliases` section
-```php
-'LCL' => Saasscaleup\LCL\Facades\LCLFacade::class,
-```
-
 
 ---
 
 ### Publish package's config, migration and view files
 
-
 Publish package's config, migration and view files by running below command:
 
 ```bash
-$ php artisan vendor:publish --provider="Saasscaleup\LCL\LCLServiceProvider"
+php artisan vendor:publish --provider="SaasScaleUp\NPlusOneDetector\NPlusOneDetectorServiceProvider"
 ```
 
 ### Run migration command
 
-Run `php artisan migrate` to create `stream_console_logs` table.
+Run `php artisan migrate` to create `nplusone_warnings` table.
 
 ```bash
 $ php artisan migrate
 ```
 
-## Setup Laravel Console Log -> LCL 
-
-Aadd this in your main view/layout (usually `layout/app.blade.php`) file before </body>:
-
-```php
-@include('lcl::view')
-```
-
-```php
-<body>
-...
-@include('lcl::view')
-</body>
-```
 
 ## Configuration
 
-Configuration is done via environment variables or directly in the configuration file (`config/lcl.php`).
+You can configure the package by editing the `config/n-plus-one.php` file. This file allows you to set the threshold for detecting N+1 queries, notification preferences, and more.
 
-```
+```php
 <?php
 
 return [
+    
+    // Whether or not to enable the N+1 Detector
+    'enabled' => env('NPLUSONE_ENABLED', true),
+    
+    // The number of queries below which no alert will be triggered
+    'queries_threshold' => env('NPLUSONE_QUERIES_THRESHOLD', 50),
+    
+    // The number of queries below which no detector will be triggered
+    'detector_threshold' => env('NPLUSONE_DETECTOR_THRESHOLD', 10),
+    
+    // The number in minutes a n+1 query will be stored in memory before being discarded
+    'cache_lifetime' => env('NPLUSONE_CACHE_LIFETIME', 1440), // 24 hours / 1 day
+      
+    // Slack webhook url for N + 1 Detector
+    'slack_webhook_url' => env('NPLUSONE_SLACK_WEBHOOK_URL', ''),
 
-    // enable or disable LCL
-    'enabled' => env('LCL_ENABLED', true),
+    // Custom webhook url for N + 1 Detector
+    'custom_webhook_url' => env('NPLUSONE_CUSTOM_WEBHOOK_URL', ''),
 
-    // enable or disable laravel log listener 
-    'log_enabled' => env('LCL_LOG_ENABLED', true),
+    // notification email address for N + 1 Detector
+    'notification_email' => env('NPLUSONE_NOTIFICATION_EMAIL', 'admin@example.com'), // also possible: 'admin@example.com,admin2@example.com'
 
-    // log listener  for specific log type
-    'log_type' => env('LCL_LOG_TYPE', 'info,error,warning,alert,critical,debug'), // Without space
+    // notification email subject for N + 1 Detector
+    'notification_email_subject' => env('NPLUSONE_NOTIFICATION_EMAIL_SUBJECT', 'N+1 Detector Notification'),
 
-    // log listener for specific word inside log messages
-    'log_specific' => env('LCL_LOG_SPECIFIC', ''), // 'test' or 'foo' or 'bar' or leave empty '' to disable this feature
+    // Dashboard Middleware for N + 1 Detector
+    'dashboard_middleware' => env('NPLUSONE_DASHBOARD_MIDDLEWARE', ['web', 'auth']),
 
-    // echo data loop in LCLController
-    'interval' => env('LCL_INTERVAL', 1),
-
-    // append logged user id in LCL response
-    'append_user_id' => env('LCL_APPEND_USER_ID', true),
-
-    // keep events log in database
-    'keep_events_logs' => env('LCL_KEEP_EVENTS_LOGS', false),
-
-    // Frontend pull invoke interval
-    'server_event_retry' => env('LCL_SERVER_EVENT_RETRY', '2000'),
-
-    // every 10 minutes cache expired, delete logs on next request
-    'delete_log_interval' => env('LCL_DELETE_LOG_INTERVAL', 600), 
-
-    /******* Frontend *******/
-
-    // eanlbed console log on browser
-    'js_console_log_enabled' => env('LCL_JS_CONSOLE_LOG_ENABLED', true),
+    // Dashboard Pagination for N + 1 Detector
+    'dashboard_records_pagination' => env('NPLUSONE_DASHBOARD_RECORDS_PAGINATION', 10),
 
 ];
 ```
 
 ## Usage
 
-Syntax:
+### Real-time Detection
+
+The package automatically listens to your database queries and detects N+1 issues in real-time. When an N+1 query is detected, it logs the query details and optionally sends notifications.
+
+### Admin Dashboard
+
+Access the rich admin dashboard to view all N+1 warnings:
 
 ```php
-/**
-* @param string $message : notification message
-* @param string $type : alert, success, error, warning, info, debug, critical, etc...
-* @param string $event : Type of event such as "EmailSent", "UserLoggedIn", etc
- */
-LCLFacade::notify($message, $type = 'info', $event = 'stream-console-log')
+Route::get('/n-plus-one-dashboard', [NPlusOneDashboardController::class, 'index'])->name('n-plus-one.dashboard');
 ```
 
-To show popup notifications on the screen, in your controllers/event classes, you can  do:
+The dashboard provides a comprehensive view of all detected N+1 queries, including SQL statements, occurrences, locations, and suggested fixes.
 
-```php
-use Saasscaleup\LCL\Facades\LCLFacade;
-
-public function myFunction()
-{
-
-    LCLFacade::notify('Invoke stream log via Facade 1');
-
-    // Some code here
-
-    LCLFacade::notify('Invoke stream log via Facade 2');
-
-    // Some code here
-
-    LCLFacade::notify('Invoke stream log via Facade 3');
-    
-    // or via helper
-    stream_log('Invoke stream log via helper 1');
-    stream_log('Invoke stream log via helper 2');     
-    stream_log('Invoke stream log via helper 3');
+![banner](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/dashboard.png?raw=true)
 
 
-    // or using your application
-    \Log::info('Invoke stream log via application log 1');
-    \Log::error('Invoke stream log via application log 2');
-    \Log::debug('Invoke stream log via application log 3');
+### Notifications
 
-}
-```
+Configure notifications to be sent via **Slack**, **webhook**, or **email**. Set your notification preferences in the config/n-plus-one.php file to stay informed about N+1 issues in your application.
 
-
-
-## Customizing Notification Library
-
-You can also, customize this by modifying code in `resources/views/vendor/lcl/view.blade.php` file.
-
-## Customizing LCL Events
-
-By default, package uses `stream-console-log` event type for streaming response:
+![slack](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/slack1-notification.png?raw=true)
+![webhook](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/webhook-notification.png?raw=true)
+![email](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/email-notification.png?raw=true)
 
 
-```php
-LCLFacade::notify($message, $type = 'info', $event = 'stream-console-log')
-```
+## Advanced Features
 
-Notice `$event = 'stream-console-log'`. You can customize this, let's say you want to use `UserPurchase` as SSE event type:
+Detailed Query Insights
 
-```php
-use Saasscaleup\LCL\Facades\LCLFacade;
-
-public function myMethod()
-{
-    LCLFacade::notify('User purchase plan - step 1', 'info', 'UserPurchase');
-    
-    // or via helper
-    stream_console_log('User purchase plan - step 1', 'info', 'UserPurchase');
-}
-```
-
-Then you need to handle this in your view yourself like this:
-
-```javascript
-<script>
-var es = new EventSource("{{route('lcl-stream-log')}}");
-
-es.addEventListener("UserPurchase", function (e) {
-    var data = JSON.parse(e.data);
-    alert(data.message);
-}, false);
-
-</script>
-```
-
-## Inspired By
-
-[open-source](https://github.com/saasscaleup/laravel-stream-log)
+The package provides detailed insights into each detected N+1 query, including the class and methods involved. This helps you quickly pinpoint the source of the problem and implement a fix.
 
 ## License
 
@@ -250,3 +174,5 @@ Please see the [MIT](license.md) for more information.
 Thanks for your support :)
 
 <a href="https://www.buymeacoffee.com/scaleupsaas"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=scaleupsaas&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
+
+
