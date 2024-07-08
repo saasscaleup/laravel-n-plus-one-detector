@@ -5,9 +5,9 @@
     "homepage": "https://github.com/saasscaleup/laravel-n-plus-one-detector",
     "keywords": [
         "laravel",
-        "n+1 query",
-        "n+1 problem",
-        "n + 1 query",
+        "n plus one query",
+        "n-plus-one problem",
+        "n-plus-one query",
         "query optimization",
         "database optimization",
         "performance tuning",
