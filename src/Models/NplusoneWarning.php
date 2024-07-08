@@ -14,5 +14,14 @@ class NplusoneWarning extends Model
         'location',
     ];
 
-
+    /**
+     * Create a new record in the database with the given attributes.
+     *
+     * @param array $attributes The attributes to create the record with.
+     * @return \Illuminate\Database\Eloquent\Model The created model instance.
+     */
+    public static function createRecord(array $attributes = [])
+    {
+        return static::query()->create($attributes);
+    }
 }
