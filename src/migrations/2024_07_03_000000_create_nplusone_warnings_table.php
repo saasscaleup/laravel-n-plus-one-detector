@@ -12,6 +12,7 @@ class CreateNplusoneWarningsTable extends Migration
             $table->id();
             $table->text('sql')->nullable();
             $table->text('location')->nullable();
+            $table->text('solution')->nullable();
             $table->timestamps();
         });
     }
