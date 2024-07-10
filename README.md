@@ -59,7 +59,7 @@ Laravel N+1 Query Detector is a powerful package designed to help you identify a
 Via Composer - Not recommended for production environment
 
 ``` bash
-$ composer require --dev saasscaleup/laravel-n-plus-one-detector
+composer require --dev saasscaleup/laravel-n-plus-one-detector
 ```
 
 ---
@@ -77,7 +77,7 @@ php artisan vendor:publish --provider="SaasScaleUp\NPlusOneDetector\NPlusOneDete
 Run `php artisan migrate` to create `nplusone_warnings` table.
 
 ```bash
-$ php artisan migrate
+php artisan migrate
 ```
 
 
@@ -99,8 +99,8 @@ return [
     // The number of queries below which no detector will be triggered
     'detector_threshold' => env('NPLUSONE_DETECTOR_THRESHOLD', 10),
     
-    // The number in minutes a n+1 query will be stored in memory before being discarded
-    'cache_lifetime' => env('NPLUSONE_CACHE_LIFETIME', 1440), // 24 hours / 1 day
+    // The number in minutes a n+1 query will be stored in memory before being discarded. So it won't repeat itself
+    'cache_lifetime' => env('NPLUSONE_CACHE_LIFETIME', 14400), // 10 days
       
     // Slack webhook url for N + 1 Detector
     'slack_webhook_url' => env('NPLUSONE_SLACK_WEBHOOK_URL', ''),
