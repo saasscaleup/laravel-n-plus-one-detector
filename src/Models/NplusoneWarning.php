@@ -1,6 +1,6 @@
 <?php
 
-namespace Saasscaleup\NPlusOneDetector\models;
+namespace Saasscaleup\NPlusOneDetector\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

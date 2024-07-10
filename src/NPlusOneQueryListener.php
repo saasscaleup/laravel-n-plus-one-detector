@@ -172,34 +172,4 @@ class NPlusOneQueryListener
         return 'Unknown location';
     }
 
-    // protected function getCallingLocation()
-    // {
-    //     $backtrace = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 50);
-
-    //     foreach ($backtrace as $trace) {
-    //         if ($trace['function'] == "getRelationValue" || $trace['function'] ===Relation::class) {
-    //             //echo '<pre>'. print_r($trace, true) .'</pre>';
-    //             $relation = $trace;
-    //             if (is_array($relation) && isset($relation['object'])) {
-    //                 if ($relation['class'] === Relation::class) {
-    //                     $model = get_class($relation['object']->getParent());
-    //                     $relationName = get_class($relation['object']->getRelated());
-    //                     $relatedModel = $relationName;
-    //                 } else {
-    //                     $model = get_class($relation['object']);
-    //                     $relationName = $relation['args'][0];
-    //                     $relatedModel = $relationName;
-    //                 }
-
-
-    //             }
-    //         }
-    //         if (isset($trace['file']) && !str_contains($trace['file'], 'vendor/') && !str_contains($trace['file'], 'NPlusOneQueryListener.php')) {
-    //             $class = isset($trace['class']) ? $trace['class'] : 'Unknown class';
-    //             $function = isset($trace['function']) ? $trace['function'] : 'Unknown function';
-    //             return $class . '::' . $function . ' in ' . $trace['file'] . ':' . $trace['line'];
-    //         }
-    //     }
-    //     return 'Unknown location';
-    // }
 }
