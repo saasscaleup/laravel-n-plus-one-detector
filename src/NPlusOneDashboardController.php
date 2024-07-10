@@ -4,10 +4,9 @@ namespace Saasscaleup\NPlusOneDetector;
 
 use Illuminate\Routing\Controller;
 use Saasscaleup\NPlusOneDetector\Models\NplusoneWarning;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Cache;
 /**
  * N+1 Dashboard Controller
  *
@@ -47,6 +46,16 @@ class NPlusOneDashboardController extends Controller
         try {
             // Find the N+1 query with the given ID and delete it.
             $warning = NplusoneWarning::findOrFail($id);
+
+            // Generate a unique key for the cache entry.
+            $md5_key = md5($warning->sql.$warning->location);
+
+            // Delete the corresponding cache entry, if it exists.
+            if (Cache::has($md5_key)){
+                Cache::forget($md5_key);
+            }
+            
+            // Delete the N+1 query from the database.
             $warning->delete();
 
             // Flash the success message.
