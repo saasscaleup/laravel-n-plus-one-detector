@@ -124,7 +124,6 @@ class NPlusOneQueryListener
                         return explode(' in ', $query['location'])[0];
                     }, $queries));
 
-                    dd($classAndMethods);
                     // Save warning to the database
                     NplusoneWarning::createRecord([
                         'sql' => $queries[0]['sql'],
