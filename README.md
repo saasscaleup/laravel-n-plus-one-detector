@@ -68,8 +68,31 @@ composer require --dev saasscaleup/laravel-n-plus-one-detector
 
 Publish package's config, migration and view files by running below command:
 
+Try this command first
+
 ```bash
 php artisan vendor:publish --provider="SaasScaleUp\NPlusOneDetector\NPlusOneDetectorServiceProvider"
+```
+
+If you are getting this result:
+
+ ```
+No publishable resources for tag [].
+Publishing complete.
+```
+
+Than try to publish the assests one by one:
+
+```bash
+php artisan vendor:publish --provider="SaasScaleUp\NPlusOneDetector\NPlusOneDetectorServiceProvider" --tag=config
+```
+
+```bash
+php artisan vendor:publish --provider="SaasScaleUp\NPlusOneDetector\NPlusOneDetectorServiceProvider" --tag=views
+```
+
+```bash
+php artisan vendor:publish --provider="SaasScaleUp\NPlusOneDetector\NPlusOneDetectorServiceProvider" --tag=migrations
 ```
 
 ### Run migration command
