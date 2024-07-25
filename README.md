@@ -14,15 +14,15 @@
 </h4>
 
 <p align="center">
-   <a href="https://packagist.org/packages/saasscaleup/laravel-console-log">
+   <a href="https://packagist.org/packages/saasscaleup/laravel-n-plus-one-detector">
       <img src="https://img.shields.io/packagist/v/saasscaleup/laravel-n-plus-one-detector.svg?style=flat-square" alt="Latest Stable Version">
   </a>
 
-  <a href="https://packagist.org/packages/saasscaleup/laravel-console-log">
+  <a href="https://packagist.org/packages/saasscaleup/laravel-n-plus-one-detector">
       <img src="https://img.shields.io/packagist/dt/saasscaleup/laravel-n-plus-one-detector.svg?style=flat-square" alt="Total Downloads">
   </a>
 
-  <a href="https://packagist.org/packages/saasscaleup/laravel-console-log">
+  <a href="https://packagist.org/packages/saasscaleup/laravel-n-plus-one-detector">
     <img src="https://img.shields.io/packagist/l/saasscaleup/laravel-n-plus-one-detector.svg?style=flat-square" alt="License">
   </a>
 </p>
