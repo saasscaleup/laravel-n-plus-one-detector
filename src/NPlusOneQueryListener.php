@@ -118,7 +118,6 @@ class NPlusOneQueryListener
                     $message = "Potential N+1 query detected: ".$queries[0]['sql']
                         . " executed " . count($queries) . " times at locations: "
                         . $queries[0]['location'];
-                    echo $message;
 
                     $classAndMethods = array_unique(array_map(function ($query) {
                         return explode(' in ', $query['location'])[0];
