@@ -14,19 +14,18 @@
 </h4>
 
 <p align="center">
-   <a href="https://packagist.org/packages/saasscaleup/laravel-n-plus-one-detector">
-      <img src="https://poser.pugx.org/saasscaleup/laravel-n-plus-one-detector/v/stable.png" alt="Latest Stable Version">
+   <a href="https://packagist.org/packages/saasscaleup/laravel-console-log">
+      <img src="https://img.shields.io/packagist/v/saasscaleup/laravel-n-plus-one-detector.svg?style=flat-square" alt="Latest Stable Version">
   </a>
 
-  <a href="https://packagist.org/packages/saasscaleup/laravel-n-plus-one-detector">
-      <img src="https://poser.pugx.org/saasscaleup/laravel-n-plus-one-detector/downloads.png" alt="Total Downloads">
+  <a href="https://packagist.org/packages/saasscaleup/laravel-console-log">
+      <img src="https://img.shields.io/packagist/dt/saasscaleup/laravel-n-plus-one-detector.svg?style=flat-square" alt="Total Downloads">
   </a>
 
-  <a href="https://packagist.org/packages/saasscaleup/laravel-n-plus-one-detector">
-    <img src="https://poser.pugx.org/saasscaleup/laravel-n-plus-one-detector/license.png" alt="License">
+  <a href="https://packagist.org/packages/saasscaleup/laravel-console-log">
+    <img src="https://img.shields.io/packagist/l/saasscaleup/laravel-n-plus-one-detector.svg?style=flat-square" alt="License">
   </a>
 </p>
-
 <br>
 
 ![banner](https://github.com/saasscaleup/laravel-n-plus-one-detector/blob/master/dashboard.png?raw=true)
