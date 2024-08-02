@@ -55,7 +55,7 @@ class NPlusOneQueryListener
         // Listen for database queries
         DB::listen(function ($query) {
             // Check if the query is a SELECT query
-            if (stripos($query->sql, 'select') === 0 && str_contains($query->sql, 'comments')) {
+            if (stripos($query->sql, 'select') === 0) {
 
                 try{
                     // Get the calling location
