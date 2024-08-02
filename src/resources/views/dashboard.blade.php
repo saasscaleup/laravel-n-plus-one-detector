@@ -92,7 +92,7 @@
                 </div>
 
                 <!-- Pagination links -->
-                {{ $warnings->links('pagination::bootstrap-5') }}
+                {{ $warnings->links() }}
             </div>
         </div>
     </div>
