@@ -39,23 +39,26 @@ class NPlusOneDetectorServiceProvider extends ServiceProvider
         // Load the views.
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'n-plus-one');
 
-        // Publish the configuration file.
-        $this->publishes([
-            __DIR__ . '/config/n-plus-one.php' => config_path('n-plus-one.php'),
-        ], 'config');
+        if ($this->app->runningInConsole()) {
 
-        // Publish the views.
-        $this->publishes([
-            __DIR__ . '/resources/views' => resource_path('views/vendor/n-plus-one'),
-        ], 'views');
-
-        // Publish the migration.
-        if (!class_exists('CreateNplusoneWarningsTable')) {
+            // Publish the configuration file.
             $this->publishes([
-                __DIR__ . '/migrations/2024_07_03_000000_create_nplusone_warnings_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_nplusone_warnings_table.php'),
-            ], 'migrations');
-        }
+                __DIR__ . '/config/n-plus-one.php' => config_path('n-plus-one.php'),
+            ], 'config');
 
+            // Publish the views.
+            $this->publishes([
+                __DIR__ . '/resources/views' => resource_path('views/vendor/n-plus-one'),
+            ], 'views');
+
+            // Publish the migration.
+            if (!class_exists('CreateNplusoneWarningsTable')) {
+                $this->publishes([
+                    __DIR__ . '/migrations/2024_07_03_000000_create_nplusone_warnings_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_nplusone_warnings_table.php'),
+                ], 'migrations');
+            }
+        }
+        
         // Register the NPlusOneQueryListener if enabled.
         $this->registerNPlusOneListener();
     }
