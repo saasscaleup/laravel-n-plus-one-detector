@@ -80,7 +80,7 @@ No publishable resources for tag [].
 Publishing complete.
 ```
 
-Than try to publish the assests one by one:
+Than try to this:
 
 ```bash
 php artisan vendor:publish
