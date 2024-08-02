@@ -103,6 +103,14 @@ Run `php artisan migrate` to create `nplusone_warnings` table.
 php artisan migrate
 ```
 
+### Run route:cache command 
+
+Run `php artisan migrate` to make sure route cache will be purge becasue we are adding new route `/n-plus-one-dashboard`.
+
+```bash
+php artisan route:cache
+```
+
 
 ## Configuration
 
