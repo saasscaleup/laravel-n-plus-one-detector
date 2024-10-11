@@ -20,10 +20,10 @@ return [
     // Custom webhook url for N + 1 Detector
     'custom_webhook_url' => env('NPLUSONE_CUSTOM_WEBHOOK_URL', ''),
 
-    // notification email address for N + 1 Detector
+    // Notification email address for N + 1 Detector
     'notification_email' => env('NPLUSONE_NOTIFICATION_EMAIL', 'admin@example.com'), // also possible: 'admin@example.com,admin2@example.com'
 
-    // notification email subject for N + 1 Detector
+    // Notification email subject for N + 1 Detector
     'notification_email_subject' => env('NPLUSONE_NOTIFICATION_EMAIL_SUBJECT', 'N+1 Detector Notification'),
 
     // Dashboard Middleware for N + 1 Detector
