@@ -1,6 +1,6 @@
 {
     "name": "saasscaleup/laravel-n-plus-one-detector",
-    "description": "Real-time detection and resolution of N+1 query issues for Laravel applications",
+    "description": "Real-time detection and resolution of N+1 query issues for Laravel applications. Support now Laravel 11",
     "license": "MIT",
     "homepage": "https://github.com/saasscaleup/laravel-n-plus-one-detector",
     "keywords": [
